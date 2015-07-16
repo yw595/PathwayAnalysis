@@ -1,4 +1,4 @@
-inputFile = fopen('hLGDB Default List.csv');
+inputFile = fopen('hLGDB Default Original.csv');
 
 entrezIDs = [];
 line = fgetl(inputFile);
@@ -14,7 +14,7 @@ while line ~= -1
 end
 fclose(inputFile);
 
-outputFile = fopen('hLGDB Default List entrezIDs.txt','w');
+outputFile = fopen('hLGDB Default Human Entrez List.txt','w');
 for i=1:length(entrezIDs)-1
     fprintf(outputFile,'%d\n',entrezIDs(i));
 end

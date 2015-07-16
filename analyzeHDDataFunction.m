@@ -11,7 +11,7 @@ if(testLysosomal)
     inputFile = fopen(['input' filesep 'Ensembl Mouse List.csv']);
     dataFields = textscan(inputFile,repmat('%s',1,2),'Delimiter',',','HeaderLines',1);
 elseif(testMitoMiner)
-    inputFile = fopen(['input' filesep 'MitoMiner Mouse List.csv']);
+    inputFile = fopen(['input' filesep 'MitoMiner Mouse Ensembl To Human Entrez.csv']);
     dataFields = textscan(inputFile,repmat('%s',1,16),'Delimiter',',','HeaderLines',1);
 elseif(testMitoCarta)
     inputFile = fopen(['input' filesep 'MitoCarta Mouse Ensembl To Human Entrez.csv']);
@@ -41,7 +41,6 @@ for i=1:size(pVals,2)
     sortPValsCol = sortPValsCol(intersectIdxs);
     lookSigEntrezIDs = {};
     for j=1:length(lookSigEnsemblIDs{i})
-        %j
         lookSigEntrezIDs{j} = ensemblToEntrez(lookSigEnsemblIDs{i}{j});
     end
     length(lookSigEntrezIDs)

@@ -1,21 +1,4 @@
-haveReadXLS = 1;
-if exist('rawMetadata','var') && exist('rawData','var')
-    haveReadXLS = 0;
-end
-
-if(haveReadXLS)
-    [junk1, junk2, rawMetadata] = xlsread( ...
-    '6_month_allelic_series_data_mRNA_with_metadata2014_21.xlsx','mRNA Metadata');
-    mouseIDs = rawMetadata(2:end,1);
-    tissues = rawMetadata(2:end,3);
-    QLengths = rawMetadata(2:end,4);
-    sexes = rawMetadata(2:end,6);
-
-    [junk1, ~, rawData] = xlsread( ...
-    '6_month_allelic_series_data_mRNA_with_metadata2014_21.xlsx','mRNA FPKM data');
-    geneIDs = rawData(2:end,1);
-end
-expressionData = cell2mat(rawData(2:end,2:end));
+load('HDDataProcessed.mat');
 
 GCTFile = fopen('HD.gct','w');
 fprintf(GCTFile,'#1.2\n');

@@ -3,9 +3,9 @@ library('gplots')
 library('lattice')
 library('biomaRt')
 
-convertEnsemblToEntrez = function (ensemblListFile, ensembltoEntrezFile)
+convertEnsemblToEntrez = function (ensemblListFile, ensemblToEntrezFile)
 {
-mitocarta = read.table("MitoCarta Mouse Ensembl List.txt")
+mitocarta = read.table(ensemblListFile)
 ensemblHuman = useMart('ensembl', dataset='hsapiens_gene_ensembl')
 ensemblMouse = useMart('ensembl', dataset='mmusculus_gene_ensembl')
 
@@ -19,6 +19,6 @@ mapmitocarta3 = cbind(mapmitocarta1[matchIdxs1,1], mapmitocarta2[matchIdxs2,2])
 write.table(mapmitocarta3, file=ensemblToEntrezFile, quote=FALSE, sep=",", row.names=FALSE)
 }
 
-convertEnsemblToEntrez("MitoCarta Mouse Ensembl List.txt","MitoCarta Mouse Ensembl To Human Entrez.csv")
-convertEnsemblToEntrez("MitoMiner Mouse Ensembl List.txt","MitoMiner Mouse Ensembl To Human Entrez.csv")
-convertEnsemblToEntrez("All Mouse Ensembl List.txt","All Mouse Ensembl To Human Entrez.csv")
+convertEnsemblToEntrez("input/MitoCarta Mouse Ensembl List.txt","input/MitoCarta Mouse Ensembl To Human Entrez.csv")
+convertEnsemblToEntrez("input/MitoMiner Mouse Ensembl List.txt","input/MitoMiner Mouse Ensembl To Human Entrez.csv")
+convertEnsemblToEntrez("input/All Mouse Ensembl List.txt","input/All Mouse Ensembl To Human Entrez.csv")

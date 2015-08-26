@@ -3,7 +3,7 @@ library('gplots')
 library('lattice')
 library('biomaRt')
 
-convertEnsemblToEntrez = function (ensemblListFile, ensemblToEntrezFile)
+convertEnsemblToEntrez1 = function (ensemblListFile, ensemblToEntrezFile)
 {
 mitocarta = read.table(ensemblListFile)
 ensemblHuman = useMart('ensembl', dataset='hsapiens_gene_ensembl')
@@ -19,6 +19,20 @@ mapmitocarta3 = cbind(mapmitocarta1[matchIdxs1,1], mapmitocarta2[matchIdxs2,2])
 write.table(mapmitocarta3, file=ensemblToEntrezFile, quote=FALSE, sep=",", row.names=FALSE)
 }
 
-convertEnsemblToEntrez("input/MitoCarta Mouse Ensembl List.txt","input/MitoCarta Mouse Ensembl To Human Entrez.csv")
-convertEnsemblToEntrez("input/MitoMiner Mouse Ensembl List.txt","input/MitoMiner Mouse Ensembl To Human Entrez.csv")
-convertEnsemblToEntrez("input/All Mouse Ensembl List.txt","input/All Mouse Ensembl To Human Entrez.csv")
+convertEnsemblToEntrez2 = function (ensemblListFile, ensemblToEntrezFile, entrezFile)
+{
+mitocarta = read.table(ensemblListFile)
+ensemblMouse = useMart('ensembl', dataset='mmusculus_gene_ensembl')
+
+mapmitocarta = getBM(attributes = c('ensembl_gene_id','entrezgene'), filters = c('ensembl_gene_id','with_entrezgene'), values = list( as.vector(mitocarta[,1]),TRUE ), mart = ensemblMouse)
+
+write.table(mapmitocarta, file=ensemblToEntrezFile, quote=FALSE, sep=",", row.names=FALSE)
+write.table(mapmitocarta[,2], file=entrezFile, quote=FALSE, sep=",", row.names=FALSE, col.names=FALSE)
+}
+
+convertEnsemblToEntrez1("input/MitoCarta Mouse Ensembl List.txt","input/MitoCarta Mouse Ensembl To Human Entrez.csv")
+convertEnsemblToEntrez1("input/MitoMiner Mouse Ensembl List.txt","input/MitoMiner Mouse Ensembl To Human Entrez.csv")
+convertEnsemblToEntrez1("input/All Mouse Ensembl List.txt","input/All Mouse Ensembl To Human Entrez.csv")
+
+convertEnsemblToEntrez2("input/MitoCarta Mouse Ensembl List.txt","input/MitoCarta Mouse Ensembl To Mouse Entrez.csv","input/MitoCarta Mouse Entrez List.txt")
+convertEnsemblToEntrez2("input/All Mouse Ensembl List.txt","input/All Mouse Ensembl To Mouse Entrez.csv","input/All Mouse Entrez List.txt")

@@ -3,12 +3,12 @@ library("RDAVIDWebService")
 #data(demoList1)
 #result = addList(david, demoList1, idType = "AFFYMETRIX_3PRIME_#IVT_ID", listName = "demoList1", listType = "Gene")
 
-subDirs = c("MitoCartaCorr","MitoCartaT","MitoMinerCorr","MitoMinerT")
+subDirs = c("analyzeAllMitoCartaT")
 prefixes = c("lookSigEnsemblIDs","sigEnsemblIDs")
 
 for (i in 1:length(subDirs))
 {
-    for (j in 1:6)
+    for (j in 1:3)
     {
 	for (k in 1:2)
 	{
@@ -22,7 +22,7 @@ for (i in 1:length(subDirs))
 	    }
 	    else
 	    {
-		backgroundFile = "input/All Mouse Ensembl List.txt"
+		backgroundFile = "input/All Mouse Entrez List.txt"
 	    }
 	    genesFile = paste0(c("input/", subDirs[i], "/", prefixes[k], j, ".txt"), collapse="")
 	    outFile = paste0(c("input/", subDirs[i], "/", prefixes[k], j, "DAVIDout.csv"), collapse="")

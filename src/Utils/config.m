@@ -25,4 +25,4 @@ if ~exist('origRecon2','var')
     loadModels;
 end
 
-configStruct = v2struct();
+configStruct = v2struct();

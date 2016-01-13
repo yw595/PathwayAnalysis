@@ -1,0 +1,16 @@
+*~
+*.mat
+*.txt
+*.xlsx
+*.csv
+*.pptx
+*.gct
+*.jar
+*.png
+*.zip
+*.html
+*.gz
+*.tgz
+*._*
+*.xls
+.Rhistory

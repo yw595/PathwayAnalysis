@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 config;
 v2struct();
 disp('running fluxAllHDData');

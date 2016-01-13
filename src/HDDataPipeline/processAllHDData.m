@@ -34,4 +34,4 @@ for i=1:size(allExpressionData,1)
     end
 end
 
-save([outputDir1 filesep 'allHDDataProcessed.mat'],'pValsCorr','pValsT','rhos','labelsT','labelsCorr');
+save([outputDir1 filesep 'allHDDataProcessed.mat'],'pValsCorr','pValsT','rhos','labelsT','labelsCorr');

@@ -24,7 +24,7 @@ lookEnsemblIDs = {};
 line = fgetl(inputFile);
 line = fgetl(inputFile); % skip header of inputFile
 while line ~= -1
-    words = strsplit(line,',');
+    words = strsplitYiping(line,',');
     if(testLysosomal)
         if(length(words)==2) %check if actual ENSMUSG, might be empty
             lookEnsemblIDs{end+1} = words{2};

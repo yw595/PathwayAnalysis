@@ -4,7 +4,7 @@ ensemblIDs = {};
 line = fgetl(inputFile);
 line = fgetl(inputFile); % skip header of inputFile
 while line ~= -1
-    words = strsplit(line,'\t');
+    words = strsplitYiping(line,'\t');
     possibleEnsemblID = words{2};
     %check if actual ENSG, might be LRG
     if(strcmp(possibleEnsemblID(1:3),'ENS'))
